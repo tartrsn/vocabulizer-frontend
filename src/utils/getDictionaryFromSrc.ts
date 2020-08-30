@@ -1,6 +1,6 @@
 import { append, flatten, groupBy, pipe, prop, reduce, sort, toLower, toPairs, unfold } from 'ramda'
+import { Range } from './inrervals'
 
-export type Range = { start: number; end: number }
 export type DictionaryItem = {
   dictionaryWord: string
   partOfSpeechTag: string

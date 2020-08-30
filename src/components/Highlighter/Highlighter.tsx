@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { append, flatten, isEmpty, last, map, reduce, slice } from 'ramda'
-import { Range } from '../../utils/getDictionaryFromSrc'
+import { Range } from '../../utils/inrervals'
 import './Highlighter.css'
 import BEM from '../../utils/BEM'
 

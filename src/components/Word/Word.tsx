@@ -12,6 +12,6 @@ type Props = {
 
 export const Word: React.FunctionComponent<Props> = ({ word, selected, onSelect }) => (
   <span className={b({ selected })} onClick={() => onSelect?.(word)}>
-    {word.dictionaryWord} ({word.entriesInSrc.length}){' '}
+    {word.dictionaryWord}<sup className={b("count")}>{word.entriesInSrc.length}</sup>
   </span>
 )

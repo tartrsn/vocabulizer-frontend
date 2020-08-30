@@ -1,6 +1,12 @@
 .Word {
   cursor: pointer;
+  margin-right: 1rem;
 }
 .Word--selected {
   background: hsla(51, 100%, 50%, 1);
+}
+
+.Word__count {
+  font-size: 0.6em;
+  font-family: 'PT Mono';
 }

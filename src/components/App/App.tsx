@@ -1,12 +1,14 @@
 import React, { useState, useMemo } from 'react'
+import { flatten, map, pipe, prop, sort, tap } from 'ramda'
 import faker from 'faker'
 import BEM from '../../utils/BEM'
 import TextArea from '../TextArea/TextArea'
-import { DictionaryItem, getDictionaryFromSrc, Range } from '../../utils/getDictionaryFromSrc'
+import { DictionaryItem, getDictionaryFromSrc } from '../../utils/getDictionaryFromSrc'
+import { mergeIntervals, Range } from '../../utils/inrervals'
+import { Dictionary } from '../Dictianary/Dictionary'
 import { Highlighter } from '../Highlighter/Highlighter'
 
 import './App.css'
-import { Dictionary } from '../Dictianary/Dictionary'
 
 const b = BEM('App')
 
@@ -39,7 +41,16 @@ const App: React.FunctionComponent<{}> = () => {
   const [src, setSrc] = useState<string>(sample)
   const dictionary = useMemo(() => getDictionaryFromSrc(src), [src])
   const [selectedWords, seSelectedWords] = useState<DictionaryItem[]>([])
-  const highlighters = useMemo<Range[]>(() => selectedWords[0]?.entriesInSrc ?? [], [selectedWords, dictionary, src])
+  const highlighters = useMemo<Range[]>(
+    () =>
+      pipe(
+        map<DictionaryItem, Range[]>(({ entriesInSrc }) => entriesInSrc),
+        flatten,
+        sort<Range>((a, b) => a.start - b.start),
+        mergeIntervals,
+      )(selectedWords),
+    [selectedWords, dictionary, src],
+  )
 
   return (
     <div className={b()}>

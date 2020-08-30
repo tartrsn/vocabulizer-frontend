@@ -16,18 +16,18 @@ type Props = {
 export const Dictionary: React.FunctionComponent<Props> = ({ dictionary, selectedWords, onSelectWords }) => (
   <div className={b()}>
     {dictionary.map((word) => (
-      <Word
-        selected={contains(word, selectedWords)}
-        key={word.dictionaryWord}
-        word={word}
-        onSelect={(word) => {
-          if (contains(word, selectedWords)) {
-            return onSelectWords?.(without([word], selectedWords))
-          } else {
-            return onSelectWords?.(append(word, selectedWords))
+      <>
+        <Word
+          selected={contains(word, selectedWords)}
+          key={word.dictionaryWord}
+          word={word}
+          onSelect={(word) =>
+            contains(word, selectedWords)
+              ? onSelectWords?.(without([word], selectedWords))
+              : onSelectWords?.(append(word, selectedWords))
           }
-        }}
-      />
+        />{' '}
+      </>
     ))}
   </div>
 )
