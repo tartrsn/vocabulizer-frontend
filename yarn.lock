@@ -1994,6 +1994,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/faker@npm:^4.1.12":
+  version: 4.1.12
+  resolution: "@types/faker@npm:4.1.12"
+  checksum: a4f194c0e378f8274adfb6cb05f77437203c5c549a6b932b0b94b216def85fbb799cf816ecc010bae3e381b0ed5fafa58fcc85cd837ebb592ac73b107bdb5ff5
+  languageName: node
+  linkType: hard
+
 "@types/glob@npm:^7.1.1":
   version: 7.1.1
   resolution: "@types/glob@npm:7.1.1"
@@ -2093,6 +2100,15 @@ __metadata:
   version: 1.5.2
   resolution: "@types/q@npm:1.5.2"
   checksum: e3d8fcf9aaf9e0c597b9279a7ffe8f0b96f71a7e921bf986ee735e7f698e88f629414d759ab401a71dc38cee7f88ef2d15e4811fec14c37aab3f9f7abe3b1371
+  languageName: node
+  linkType: hard
+
+"@types/ramda@npm:^0.27.14":
+  version: 0.27.14
+  resolution: "@types/ramda@npm:0.27.14"
+  dependencies:
+    ts-toolbelt: ^6.3.3
+  checksum: 89ae96ddf924537ff4de7e2ca42250bd9359ab3e0367f0eaf5551bf1b232047d1e1054daf9c6b5938af141420190ee3f22ef877644c95a16bcf511439412d447
   languageName: node
   linkType: hard
 
@@ -2696,6 +2712,13 @@ __metadata:
   version: 1.2.0
   resolution: "aproba@npm:1.2.0"
   checksum: d4bac3e640af1f35eea8d5ee2b96ce2682549e47289f071aa37ae56066e19d239e43dea170c207d0f71586d7634099089523dd5701f26d4ded7b31dd5848a24a
+  languageName: node
+  linkType: hard
+
+"arcsecond@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "arcsecond@npm:3.1.1"
+  checksum: 43c1d6a33c8d6526779e86ad96733243022fd1f79b9a109f69d0af8ad3e45626071cbdc74aadeea87b200bab0598849a0f0abaa022dfd5c98dc16d70972e03f7
   languageName: node
   linkType: hard
 
@@ -5802,6 +5825,13 @@ __metadata:
   version: 1.4.0
   resolution: "extsprintf@npm:1.4.0"
   checksum: 092e011574324c5cddd78b5a27f869c2703613c1140eb7763aef8f5b0e33769a9b4c7dbcc50acd39b6afebe79bf66adcec73bf3c84e095c5bcfb42306d128ad0
+  languageName: node
+  linkType: hard
+
+"faker@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "faker@npm:5.1.0"
+  checksum: cc0a0c2b2952d0e7ddad67ec6302aa097d916c0bbb7baa2240a02ecdee4f42df260a233c5be108f782302e63b246add181d859ead9026687db9284050672084a
   languageName: node
   linkType: hard
 
@@ -11288,6 +11318,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"ramda@npm:^0.27.1":
+  version: 0.27.1
+  resolution: "ramda@npm:0.27.1"
+  checksum: 9aa4655dffdca66f8ba2ceabebe51996d6c75f6a2fb901a150885ace22c5950c211dd589868780b7a91c1443771702634d4370e7572d8c63c60e4b4f61aa57a9
+  languageName: node
+  linkType: hard
+
 "randombytes@npm:^2.0.0, randombytes@npm:^2.0.1, randombytes@npm:^2.0.5, randombytes@npm:^2.1.0":
   version: 2.1.0
   resolution: "randombytes@npm:2.1.0"
@@ -13405,6 +13442,13 @@ resolve@1.15.0:
   languageName: node
   linkType: hard
 
+"ts-toolbelt@npm:^6.3.3":
+  version: 6.15.5
+  resolution: "ts-toolbelt@npm:6.15.5"
+  checksum: d2f585ee3439ae7a72dd7c00630491195b2a4f34107c595d567242482b9fa911b5a9b5921fb4984506c2f7d8efce61351c7f48519438df67b6c0a8dcd40c862c
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^1.10.0, tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.11.1
   resolution: "tslib@npm:1.11.1"
@@ -13819,10 +13863,15 @@ typescript@~3.7.2:
     "@testing-library/jest-dom": ^4.2.4
     "@testing-library/react": ^9.3.2
     "@testing-library/user-event": ^7.1.2
+    "@types/faker": ^4.1.12
     "@types/jest": ^24.0.0
     "@types/node": ^12.0.0
+    "@types/ramda": ^0.27.14
     "@types/react": ^16.9.0
     "@types/react-dom": ^16.9.0
+    arcsecond: ^3.1.1
+    faker: ^5.1.0
+    ramda: ^0.27.1
     react: ^16.13.1
     react-dom: ^16.13.1
     react-scripts: 3.4.3

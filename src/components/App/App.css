@@ -1,2 +1,9 @@
-.App {}
+.App {
+  font-family: 'PT Serif', monospace;
+  font-size: 1.3rem;
 
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  white-space: pre-wrap;
+}

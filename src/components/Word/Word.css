@@ -1,0 +1,6 @@
+.Word {
+  cursor: pointer;
+}
+.Word--selected {
+  background: hsla(51, 100%, 50%, 1);
+}
