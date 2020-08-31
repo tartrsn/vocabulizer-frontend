@@ -1,0 +1,10 @@
+### Send POST request with json body
+POST https://vocabulizer-api.herokuapp.com/api/v0/get-dictionary-from-src
+Content-Type: application/json
+
+{
+    "body": {
+        "src": "I spent the first six months of the pandemic sure that help for mothers was on its way. Bills would be passed, systems would be reworked. Workplaces would shift to include caretaking within their cultures. A year of the country “staying home” would validate the work of stay-at-home mothers. As the fall brought more remote learning, we’d reconfigure school standards to keep children safe from virtual truancy and failing grades given over Zoom in the name of academic rigor. We would listen to women like Natalie Brown, mother of two and a PhD candidate, when she says we’d “shift our focus and policies to helping families survive this time in ways that work for them.”"
+    }
+}
+
