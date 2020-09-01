@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react'
-import { flatten, map, pipe, prop, sort, tap } from 'ramda'
-import faker from 'faker'
+import React, { useState, useMemo, useEffect } from 'react'
+import { includes, flatten, map, pipe, sort, filter, isEmpty } from 'ramda'
+import { useDebounce } from 'react-use'
+// import faker from 'faker'
 import BEM from '../../utils/BEM'
 import TextArea from '../TextArea/TextArea'
 import { DictionaryItem, getDictionaryFromSrc } from '../../utils/getDictionaryFromSrc'
@@ -39,25 +40,48 @@ Whether we labor in our homes or outside of them, every mother will wake up ever
 
 const App: React.FunctionComponent<{}> = () => {
   const [src, setSrc] = useState<string>(sample)
-  const dictionary = useMemo(() => getDictionaryFromSrc(src), [src])
-  const [selectedWords, seSelectedWords] = useState<DictionaryItem[]>([])
-  const highlighters = useMemo<Range[]>(
-    () =>
-      pipe(
-        map<DictionaryItem, Range[]>(({ entriesInSrc }) => entriesInSrc),
-        flatten,
-        sort<Range>((a, b) => a.start - b.start),
-        mergeIntervals,
-      )(selectedWords),
-    [selectedWords, dictionary, src],
+  const [dictionary, setDictionary] = useState()
+
+  useDebounce(
+    async () => {
+      const response = await fetch('/get-dictionary-from-src', {
+        method: 'POST',
+        body: JSON.stringify({ body: { src } }),
+      })
+
+      const data = await response.json()
+      setDictionary(data.res.data.dictionary)
+
+      // getDictionaryFromSrc(src).then((data) => setDictionary(data))
+    },
+    500,
+    [src],
   )
+
+  const [selectedWords, seSelectedWords] = useState<string[]>([])
+
+  const highlighters = useMemo<Range[]>(() => {
+    if (isEmpty(selectedWords)) return []
+
+    return pipe(
+      (words: string[]): DictionaryItem[] =>
+        filter((dictionaryItem) => includes(dictionaryItem.dictionaryWord, words), dictionary),
+
+      map<DictionaryItem, Range[]>(({ entriesInSrc }) => entriesInSrc),
+      flatten,
+      sort<Range>((a, b) => a.start - b.start),
+      mergeIntervals,
+    )(selectedWords)
+  }, [selectedWords, dictionary])
 
   return (
     <div className={b()}>
       <TextArea value={src} onChange={setSrc}>
         {(value) => <Highlighter text={value} highlighters={highlighters} />}
       </TextArea>
-      <Dictionary selectedWords={selectedWords} dictionary={dictionary} onSelectWords={seSelectedWords} />
+      {dictionary && (
+        <Dictionary selectedWords={selectedWords} dictionary={dictionary} onSelectWords={seSelectedWords} />
+      )}
     </div>
   )
 }

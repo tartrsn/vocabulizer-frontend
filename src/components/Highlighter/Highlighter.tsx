@@ -32,8 +32,10 @@ export const Highlighter: React.FunctionComponent<{ highlighters: Range[]; text:
 
   return (
     <span className={b()}>
-      {model.map(([text, isHighlighted]) => (
-        <span className={b('item', { active: isHighlighted })}>{text}</span>
+      {model.map(([text, isHighlighted], index) => (
+        <span key={`${index}____${text}`} className={b('item', { active: isHighlighted })}>
+          {text}
+        </span>
       ))}
     </span>
   )

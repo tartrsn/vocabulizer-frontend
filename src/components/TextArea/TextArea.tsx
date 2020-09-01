@@ -14,11 +14,11 @@ const TextArea: React.FunctionComponent<Props> = (props) => {
   const [value, setValue] = useState(props.value || '')
   useEffect(() => {
     onChange?.(value)
-  }, [value])
+  }, [value, onChange])
 
   return (
     <div className={b()}>
-      <textarea onChange={(ev) => setValue(ev.currentTarget.value)} className={b('input')} value={value} />
+      <textarea onInput={(ev) => setValue(ev.currentTarget.value)} className={b('input')} defaultValue={value} />
       <div className={b('input-highlighter')}>{children(value)}</div>
     </div>
   )
