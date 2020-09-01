@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "26c6a9cf46bcfa8a743d20ac7674ce28",
+    "revision": "a95a64cac9791493490ddd4d79696470",
     "url": "/vocabulizer-frontend/index.html"
   },
   {
-    "revision": "532d3748dfe1885c8fb9",
+    "revision": "dc15ebab53e03a6dd400",
     "url": "/vocabulizer-frontend/static/css/main.f1dc383b.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vocabulizer-frontend/static/js/2.d743e24d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "532d3748dfe1885c8fb9",
-    "url": "/vocabulizer-frontend/static/js/main.ab933701.chunk.js"
+    "revision": "dc15ebab53e03a6dd400",
+    "url": "/vocabulizer-frontend/static/js/main.fe4d4c0f.chunk.js"
   },
   {
     "revision": "4bedd18bb06321830d5b",

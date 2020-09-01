@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/vocabulizer-frontend/static/css/main.f1dc383b.chunk.css",
-    "main.js": "/vocabulizer-frontend/static/js/main.ab933701.chunk.js",
-    "main.js.map": "/vocabulizer-frontend/static/js/main.ab933701.chunk.js.map",
+    "main.js": "/vocabulizer-frontend/static/js/main.fe4d4c0f.chunk.js",
+    "main.js.map": "/vocabulizer-frontend/static/js/main.fe4d4c0f.chunk.js.map",
     "runtime-main.js": "/vocabulizer-frontend/static/js/runtime-main.e121356d.js",
     "runtime-main.js.map": "/vocabulizer-frontend/static/js/runtime-main.e121356d.js.map",
     "static/js/2.d743e24d.chunk.js": "/vocabulizer-frontend/static/js/2.d743e24d.chunk.js",
     "static/js/2.d743e24d.chunk.js.map": "/vocabulizer-frontend/static/js/2.d743e24d.chunk.js.map",
     "index.html": "/vocabulizer-frontend/index.html",
-    "precache-manifest.c184d9b7645b9c7a0638127a134a6a36.js": "/vocabulizer-frontend/precache-manifest.c184d9b7645b9c7a0638127a134a6a36.js",
+    "precache-manifest.1ef6f74fdcc6c6325547a44f9be2fc16.js": "/vocabulizer-frontend/precache-manifest.1ef6f74fdcc6c6325547a44f9be2fc16.js",
     "service-worker.js": "/vocabulizer-frontend/service-worker.js",
     "static/css/main.f1dc383b.chunk.css.map": "/vocabulizer-frontend/static/css/main.f1dc383b.chunk.css.map",
     "static/js/2.d743e24d.chunk.js.LICENSE.txt": "/vocabulizer-frontend/static/js/2.d743e24d.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.e121356d.js",
     "static/js/2.d743e24d.chunk.js",
     "static/css/main.f1dc383b.chunk.css",
-    "static/js/main.ab933701.chunk.js"
+    "static/js/main.fe4d4c0f.chunk.js"
   ]
 }
