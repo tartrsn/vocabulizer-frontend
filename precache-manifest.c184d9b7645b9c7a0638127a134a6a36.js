@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "20eed82b598b405e8d30c6915096c5dd",
+    "revision": "26c6a9cf46bcfa8a743d20ac7674ce28",
     "url": "/vocabulizer-frontend/index.html"
   },
   {
-    "revision": "b10602a39c5db91a6f64",
+    "revision": "532d3748dfe1885c8fb9",
     "url": "/vocabulizer-frontend/static/css/main.f1dc383b.chunk.css"
   },
   {
-    "revision": "f3ee1fe2394eb5ea4390",
-    "url": "/vocabulizer-frontend/static/js/2.f15ba606.chunk.js"
+    "revision": "81bb44429f9410e4abdb",
+    "url": "/vocabulizer-frontend/static/js/2.d743e24d.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/vocabulizer-frontend/static/js/2.f15ba606.chunk.js.LICENSE.txt"
+    "url": "/vocabulizer-frontend/static/js/2.d743e24d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b10602a39c5db91a6f64",
-    "url": "/vocabulizer-frontend/static/js/main.d43cc1bc.chunk.js"
+    "revision": "532d3748dfe1885c8fb9",
+    "url": "/vocabulizer-frontend/static/js/main.ab933701.chunk.js"
   },
   {
     "revision": "4bedd18bb06321830d5b",
