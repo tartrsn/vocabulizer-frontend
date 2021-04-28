@@ -1,15 +1,15 @@
-import React, { useState, useMemo, useEffect } from 'react'
-import { includes, flatten, map, pipe, sort, filter, isEmpty } from 'ramda'
+import { assoc, filter, flatten, includes, isEmpty, map, mapObjIndexed, pipe, propEq, reduce, sort, when } from 'ramda'
+import React, { useMemo, useState } from 'react'
 import { useDebounce } from 'react-use'
 // import faker from 'faker'
 import BEM from '../../utils/BEM'
-import TextArea from '../TextArea/TextArea'
-import { DictionaryItem, getDictionaryFromSrc } from '../../utils/getDictionaryFromSrc'
+import { DictionaryItem } from '../../utils/getDictionaryFromSrc'
 import { mergeIntervals, Range } from '../../utils/inrervals'
 import { Dictionary } from '../Dictianary/Dictionary'
 import { Highlighter } from '../Highlighter/Highlighter'
-
+import TextArea from '../TextArea/TextArea'
 import './App.css'
+
 
 const b = BEM('App')
 
@@ -40,32 +40,41 @@ Whether we labor in our homes or outside of them, every mother will wake up ever
 
 const App: React.FunctionComponent<{}> = () => {
   const [src, setSrc] = useState<string>(sample)
-  const [dictionary, setDictionary] = useState()
+  const [dictionary, setDictionary] = useState<DictionaryItem[]>([])
 
   useDebounce(
     async () => {
       const response = await fetch('/get-dictionary-from-src', {
         method: 'POST',
-        body: JSON.stringify({ body: { src } }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ src }),
       })
 
-      const data = await response.json()
-      setDictionary(data.res.data.dictionary)
+      const { data: { words }, meta: { entries } } = await response.json()
 
-      // getDictionaryFromSrc(src).then((data) => setDictionary(data))
+      const entriesMap: Record<string, Range[]> = pipe(
+        reduce((acc, entry: any) => ({ ...acc, [entry.word]: entry.entries }), {}),
+        mapObjIndexed(flatten),
+      )(entries);
+
+      setDictionary(
+        map((word: any) => ({ ...word, entriesInSrc: entriesMap[word.dictionaryWord], known: false }))(words)
+      )
     },
     500,
     [src],
   )
 
-  const [selectedWords, seSelectedWords] = useState<string[]>([])
+  const [selectedWords, setSelectedWords] = useState<string[]>([])
 
   const highlighters = useMemo<Range[]>(() => {
     if (isEmpty(selectedWords)) return []
 
     return pipe(
       (words: string[]): DictionaryItem[] =>
-        filter((dictionaryItem) => includes(dictionaryItem.dictionaryWord, words), dictionary),
+        filter((dictionaryItem) => !dictionaryItem.known && includes(dictionaryItem.dictionaryWord, words), dictionary),
 
       map<DictionaryItem, Range[]>(({ entriesInSrc }) => entriesInSrc),
       flatten,
@@ -74,13 +83,24 @@ const App: React.FunctionComponent<{}> = () => {
     )(selectedWords)
   }, [selectedWords, dictionary])
 
+  const markAsKnown = (word: DictionaryItem) => {
+    setDictionary(
+      map(
+        when(
+          propEq('dictionaryWord', word.dictionaryWord),
+          assoc('known', true)
+        )
+      )(dictionary) as unknown as DictionaryItem[]
+    )
+  }
+
   return (
     <div className={b()}>
       <TextArea value={src} onChange={setSrc}>
         {(value) => <Highlighter text={value} highlighters={highlighters} />}
       </TextArea>
       {dictionary && (
-        <Dictionary selectedWords={selectedWords} dictionary={dictionary} onSelectWords={seSelectedWords} />
+        <Dictionary selectedWords={selectedWords} dictionary={dictionary} onSelectWords={setSelectedWords} onMarkAsKnown={markAsKnown} />
       )}
     </div>
   )

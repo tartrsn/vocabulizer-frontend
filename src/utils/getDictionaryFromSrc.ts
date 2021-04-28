@@ -5,6 +5,7 @@ export type DictionaryItem = {
   dictionaryWord: string
   partOfSpeechTag: string
   entriesInSrc: Range[]
+  known?: boolean
 }
 
 export const getDictionaryFromSrc = (src: string): Promise<DictionaryItem[]> =>
