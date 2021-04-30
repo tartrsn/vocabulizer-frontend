@@ -60,7 +60,7 @@ const App: React.FunctionComponent<{}> = () => {
       )(entries);
 
       setDictionary(
-        map((word: any) => ({ ...word, entriesInSrc: entriesMap[word.dictionaryWord], known: false }))(words)
+        map((word: any) => ({ known: false, ...word, entriesInSrc: entriesMap[word.dictionaryWord] }))(words)
       )
     },
     500,
@@ -83,7 +83,7 @@ const App: React.FunctionComponent<{}> = () => {
     )(selectedWords)
   }, [selectedWords, dictionary])
 
-  const markAsKnown = async ({dictionaryWord, partOfSpeechTag}: DictionaryItem, source?: string) => {
+  const markAsKnown = async ({ dictionaryWord, partOfSpeechTag }: DictionaryItem, source?: string) => {
     await fetch('/add-known-word', {
       method: 'POST',
       headers: {
