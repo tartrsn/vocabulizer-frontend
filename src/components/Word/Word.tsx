@@ -15,6 +15,6 @@ export const Word: React.FunctionComponent<Props> = ({ word, selected, onSelect,
   <span className={b({ selected })} onClick={() => onSelect?.(word)}>
     {word.dictionaryWord}
     <sub className={b("count")}>{word.entriesInSrc.length}</sub>
-    <sup onClick={(ev) => { ev.stopPropagation(); onMarkAsKnown?.(word)}}>x</sup>
+    <button className={b("close")} onClick={(ev) => { ev.stopPropagation(); onMarkAsKnown?.(word)}}>x</button>
   </span>
 )

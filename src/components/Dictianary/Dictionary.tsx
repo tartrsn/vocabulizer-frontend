@@ -11,7 +11,7 @@ type Props = {
   selectedWords: string[]
   dictionary: DictionaryItem[]
   onSelectWords?: (words: string[]) => void
-  onMarkAsKnown?: (word: DictionaryItem) => void
+  onMarkAsKnown?: (word: DictionaryItem, source?: string) => void
 }
 
 export const Dictionary: React.FunctionComponent<Props> = ({ dictionary, selectedWords, onSelectWords, onMarkAsKnown }) => (
@@ -26,7 +26,7 @@ export const Dictionary: React.FunctionComponent<Props> = ({ dictionary, selecte
               ? onSelectWords?.(without([word.dictionaryWord], selectedWords))
               : onSelectWords?.(append(word.dictionaryWord, selectedWords))
           }
-          onMarkAsKnown={onMarkAsKnown}
+          onMarkAsKnown={(word) => onMarkAsKnown?.(word, 'reading')}
         />{' '}
       </Fragment>
     ))}

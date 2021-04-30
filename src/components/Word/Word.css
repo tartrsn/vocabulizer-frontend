@@ -1,6 +1,7 @@
 .Word {
   cursor: pointer;
   margin-right: 1rem;
+  position: relative;
 }
 .Word--selected {
   background: hsla(51, 100%, 50%, 1);
@@ -9,4 +10,25 @@
 .Word__count {
   font-size: 0.6em;
   font-family: 'PT Mono';
+}
+
+.Word__close {
+  background: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(30%, -25%);
+  color: hsla(0, 0%, 0%, 0.8);
+  font-weight: 300;
+  font-size: 0.75em;
+  font-family: Arial, sans-serif;
+  visibility: hidden;
+}
+
+.Word:hover .Word__close {
+  visibility: visible;
 }
