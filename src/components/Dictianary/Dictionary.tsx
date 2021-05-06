@@ -16,13 +16,17 @@ type Props = {
 
 export const Dictionary: React.FunctionComponent<Props> = ({ dictionary, selectedWords, onSelectWords, onMarkAsKnown }) => (
   <div className={b()}>
-    {dictionary.filter(({ known }) => !known).map((word) => (
+    {dictionary
+      .filter(({ known }) => !known)
+      .map(word => ({ word, selected: includes(word.dictionaryWord, selectedWords) }))
+      .sort((a, b) => Number(a.selected) - Number(b.selected))
+      .map(({word, selected}) => (
       <Fragment key={`${word.dictionaryWord}_${word.partOfSpeechTag}_${word.entriesInSrc.length}`}>
         <Word
-          selected={includes(word.dictionaryWord, selectedWords)}
+          selected={selected}
           word={word}
           onSelect={(word) =>
-            includes(word.dictionaryWord, selectedWords)
+            selected
               ? onSelectWords?.(without([word.dictionaryWord], selectedWords))
               : onSelectWords?.(append(word.dictionaryWord, selectedWords))
           }
