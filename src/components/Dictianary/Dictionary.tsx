@@ -10,11 +10,11 @@ const b = BEM('Dictionary')
 type Props = {
   selectedWords: string[]
   dictionary: DictionaryItem[]
-  onSelectWords?: (words: string[]) => void
+  onSelectWord?: (word: DictionaryItem, selected: boolean) => void
   onMarkAsKnown?: (word: DictionaryItem, source?: string) => void
 }
 
-export const Dictionary: React.FunctionComponent<Props> = ({ dictionary, selectedWords, onSelectWords, onMarkAsKnown }) => (
+export const Dictionary: React.FunctionComponent<Props> = ({ dictionary, selectedWords, onSelectWord, onMarkAsKnown }) => (
   <div className={b()}>
     {dictionary
       .filter(({ known }) => !known)
@@ -25,11 +25,7 @@ export const Dictionary: React.FunctionComponent<Props> = ({ dictionary, selecte
         <Word
           selected={selected}
           word={word}
-          onSelect={(word) =>
-            selected
-              ? onSelectWords?.(without([word.dictionaryWord], selectedWords))
-              : onSelectWords?.(append(word.dictionaryWord, selectedWords))
-          }
+          onSelect={(word) => onSelectWord?.(word, selected)}
           onMarkAsKnown={(word) => onMarkAsKnown?.(word, 'reading')}
         />{' '}
       </Fragment>

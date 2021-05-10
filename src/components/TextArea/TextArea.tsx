@@ -11,7 +11,12 @@ type Props = {
 
 const TextArea: React.FunctionComponent<Props> = (props) => {
   const { children, onChange } = props
-  const [value, setValue] = useState(props.value || '')
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    setValue(props.value)
+  }, [props.value]);
+
   useEffect(() => {
     onChange?.(value)
   }, [value, onChange])
